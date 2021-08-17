@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Web site created using create-react-app" />
+    <title>js-lib</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    var table = document.createElement('table')
+    table.border = 1;
+    table.width = 300;
+    document.body.appendChild(table)
+
+    var caption = document.createElement('caption');
+    table.appendChild(caption);
+    caption.appendChild(document.createTextNode('人員表'));
+
+    var thead = document.createElement('thead');
+    table.appendChild(thead);
+
+    var th = {}
+    th = document.createElement('th')
+    th.appendChild(document.createTextNode('姓名'))
+    thead.appendChild(th)
+    th = document.createElement('th')
+    th.appendChild(document.createTextNode('性別'))
+    thead.appendChild(th)
+    th = document.createElement('th')
+    th.appendChild(document.createTextNode('電話'))
+    thead.appendChild(th)
+
+    var tbody = document.createElement('tbody')
+    table.appendChild(tbody)
+
+
+    for (let i = 0; i < 3; i++) {
+        var tr = document.createElement('tr')
+        tbody.appendChild(tr)
+
+        var td = {}
+        td = document.createElement('td')
+        tr.appendChild(td)
+        td.appendChild(document.createTextNode('張三'))
+        td = document.createElement('td')
+        tr.appendChild(td)
+        td.appendChild(document.createTextNode('男生'))
+        td = document.createElement('td')
+        tr.appendChild(td)
+        td.appendChild(document.createTextNode('12345'))
+    }
+
+    var tfoot = document.createElement('tfoot')
+    table.appendChild(tfoot)
+    var tr = document.createElement('tr')
+    tfoot.appendChild(tr)
+    var td=document.createElement('td')
+    tr.appendChild(td)
+    td.colspan=3;
+    td.appendChild(document.createTextNode('合計:N'))
+
+    </script>
+</body>
+
+</html>

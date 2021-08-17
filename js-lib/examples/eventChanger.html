@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Web site created using create-react-app" />
+    <title>DarkMode</title>
+</head>
+
+<body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div> Hello World </div>
+    <p> Hello World </p>
+    <a> Hello World </a>
+    <ul>
+      <li>in li</li>
+      <li>in li</li>
+      <li>in li</li>
+    </ul>
+    <div> Hello World </div>
+    <div> Hello World </div>
+    <div> Hello World </div>
+
+
+    <script type="text/javascript">
+
+    window['onload'] = init;                     //window準備好的時候呼叫init函式
+
+    function init() {
+        var mc = new MC(bodyy);                       //創造一個MC物件
+        var bodyy = document.body                     //抓整個畫面
+        var textNodes = mc.getTargetNode(bodyy)       //把全部的字抓起來
+        document['onclick'] = function() {
+            console.log(textNodes)                    //log一下看有沒有抓到字
+            mc.darkMode(bodyy,textNodes)              //call函式主體
+        }
+    }
+
+
+    function MC(obj) {                          //控制開關燈function class主體
+        this.darkMode = darkMode                //這邊是一定要的操作
+        this.lightMode = lightMode
+        this.getTargetNode = getTargetNode
+
+        function getTargetNode(obj) {                 //這邊是要把目標nodes抓出來
+            let target = [];                          //obj = document.body
+            const objLength = obj.childNodes.length;  //找出到底有多少nodes
+            for (let i = 0; i < objLength; i++) {     //把全部nodes跑過一遍
+                const d = obj.childNodes[i]           //這行為了不要讓判斷式太長
+                if (d.innerText) {                    //如果是有文字的nodes
+                    target.push(obj.childNodes[i])    //把這些nodes蒐集起來
+                }
+            }
+            return target                             //回傳出去
+        }
+
+        function darkMode(obj,target) {
+            obj.style.backgroundColor = 'black';      //把背景改成黑色
+            target.map(node=>{                        //用map把nodes跑一遍
+              node.style.color="white"                //把nodes的color設成白色
+            })
+            document['onclick'] = function() {        //當畫面被點的時候
+                lightMode(obj,target)                 //呼叫lightMode
+            }
+        }
+
+        function lightMode(obj,target) {
+            obj.style.backgroundColor = 'white';
+            target.map(node=>{
+              node.style.color="black"
+            })
+            
+            document['onclick'] = function() {        //當畫面被點的時候
+                darkMode(obj,target)                  //呼叫darkMode
+            } 
+        }
+    }
+    </script>
+</body>
+
+</html>

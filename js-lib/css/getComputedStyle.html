@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    
+    <title>js-lib</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+
+    <div id="box"> Hello World </div>
+
+    <script type="text/javascript">
+    	var box = document.getElementById('box')
+    	console.log(box.style.height)
+    	console.log(box.style.width)
+
+    	var style = window.getComputedStyle?window.getComputedStyle(box,null):null||box.currentStyle
+
+    	console.log(style.height)
+    	console.log(style.width)
+    </script>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    
+    <title>js-lib</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+
+
+
+
+    <div>
+      <h1>Hello World</h1>
+      <div id="box">box div</div>
+      <input name="sex" value="hello">sex div</div>
+      <div>div 3</div>
+      <ul>
+        <li><p>asdfasdasf</p></li>
+        <li>a</li>
+        <li>b</li>
+      </ul>
+      <br/>
+      <br/>
+      <br/>
+    </div>
+<!--
+    <script type="text/javascript" src="_base.js"></script>
+-->
+    <script type="text/javascript">
+
+document.onclick = function(){
+  alert('我是document')
+};
+document.documentElement.onclick = function(){
+  alert('我是html')
+}
+document.body.onclick = function(){
+  alert('我是body')
+}
+document.getElementById('box').onclick = function(){
+  alert('我是div')
+}
+document.getElementsByTagName('input')[0].onclick = function() {
+  alert('我是input')
+}
+
+
+    </script>
+  </body>
+</html>

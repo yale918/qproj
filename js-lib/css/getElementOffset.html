@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Web site created using create-react-app" />
+    <title>js-lib</title>
+</head>
+
+<body style="
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    ">
+        <div id="box"></div>
+
+
+
+    <script type="text/javascript">
+      var dom = document
+      console.log(dom.body.clientWidth)
+      console.log(document.body.scrollHeight)
+
+
+    function offsetLeft(element) {
+        var offset = {}
+        offset.top = element.offsetTop;
+        offset.left = element.offsetLeft;
+        var parent = element.offsetParent;
+
+
+        while (parent !== null) {
+            offset.top += parent.offsetTop;
+            offset.left += parent.offsetLeft;
+            parent = parent.offsetParent;
+        }
+        return offset;
+    }
+    var target = offsetLeft(document.getElementById('box'))
+    console.log("(", target.top, ",", target.left, ")")
+    </script>
+</body>
+
+</html>

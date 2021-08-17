@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>snake-string</title>
+</head>
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+</style>
+<body>
+    <div style="display:flex;justify-content: center;">
+        <div style="margin-top:50px">
+            <input style="width:56px" id="row" type="text" placeholder="row" />
+            <input style="width:56px" id="col" type="text" placeholder="column" />
+            <div>
+                <input id="button" style="margin-top:5px" type="button" value="start">
+            </div>
+            <div id="root"></div>
+        </div>
+    </div>
+    <script>
+    let button = document.getElementById('button')
+    button.onclick = function() {
+        let input = {}
+        input = getData()
+
+        render(input.row, input.col)
+    }
+
+    function getData() {
+        const row = document.getElementById('row').value
+        const col = document.getElementById('col').value
+
+        let inp = {}
+        inp.row = row;
+        inp.col = col;
+        return inp
+    }
+
+    function render(row, col) {
+        let root = document.getElementById('root')
+        let se = {}
+
+        let dirFlag = true; //true往下 false往上
+
+        for (let i = 1; i <= row * col; i++) {
+            if (dirFlag) { //向下的情況
+                //console.log("向下")
+                let target = document.createElement('div')
+                target.style.fontSize = "30px"
+                target.innerText = i
+                root.appendChild(target)
+
+                //console.log(target.offsetTop)
+
+
+
+                if ((i) % col === 0) {
+                    dirFlag = !dirFlag
+
+                    se.y = target.offsetTop
+                    se.x = target.offsetLeft
+                    console.log(se.x," ",se.y)
+                    root.appendChild(document.createElement('br'))
+
+                }
+            } else { //向上的情況
+                //console.log("向上")
+
+                let target = document.createElement('div')
+                target.style.fontSize = "30px"
+                target.innerText = i
+
+                target.style.position = "absolute"
+                target.style.top = se.y+'px'
+                target.style.left = se.x+'px'
+                target.style.transform.translateX="34px"
+
+                root.appendChild(target)
+
+                //console.log(target.offsetTop)
+
+
+
+                if ((i) % col === 0) {
+                	
+                    dirFlag = !dirFlag
+                    root.appendChild(document.createElement('br'))
+                }
+            }
+
+
+
+        }
+
+    }
+    </script>
+</body>
+
+</html>

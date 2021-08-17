@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    
+    <title>js-lib</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+
+    <div id="text"> Hello World </div>
+    <div id="menu" style="height:100px;width:100px;background-color:grey;visibility: hidden; position: absolute;"> </div>
+<!--
+    <script type="text/javascript" src="_base.js"></script>
+-->
+    <script type="text/javascript">
+    	function addEvent(obj, type, fn){
+    		if(obj.addEventListener){
+    			obj.addEventListener(type,fn);
+    		}else if(obj.attachEvent){
+    			obj.attachEvent('on'+type, fn);
+    		}
+    	}
+
+		function removeEvent(obj, type, fn){
+			if(obj.removeEventListener){
+				obj.removeEventListener(type,fn);
+			}else if(obj.detachEvent){
+				obj.detachEvent('on'+type, fn)
+			}
+		}
+
+		function getTarget(evt){
+			if(evt.target){
+				return evt.target;
+			}else if(window.event.srcElement){
+				return window.event.srcElement;
+			}
+		}
+
+
+		function preDef(evt){
+			var e = evt || window.event;
+			if(e.preventDefault){
+				e.preventDefault();
+			} else{
+				e.returnValue = false;
+			}
+		}
+
+		addEvent(window,'load',function(){
+			console.log("11111")
+			console.log(text)
+			addEvent(document,'contextmenu',function(evt){
+				var e = evt || window.event;
+				preDef(e);
+
+				var menu = document.getElementById('menu');
+				menu.style.left = e.clientX + 'px';
+				menu.style.top = e.clientY + 'px';
+				menu.style.visibility = 'visible';
+
+				addEvent(document, 'click', function(){
+					document.getElementById('menu').style.visibility = 'hidden';
+				});
+			});
+		});
+
+		addEvent(window,'beforeunload',function(evt){
+			preDef(evt);
+			alert("確定要離開嗎")
+		})
+
+
+
+
+		addEvent(document,'mousewheel',function(evt){
+			alert(getWD(evt));
+		})
+
+		function getWD(evt){
+			var e = evt || window.event;
+			if(e.wheelDelta){
+				return e.wheelDelta;
+			}else if(e.detail){
+				return -evt.detail * 30;
+			}
+		}
+
+    </script>
+  </body>
+</html>
